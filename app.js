@@ -42,7 +42,7 @@ function game() {
     player = computer = 0;
 
     for (i = 0; i < 5; i++) {
-        let playerSelection = prompt("Choose: rock, paper, scissor: ").toLowerCase();
+        // let playerSelection = prompt("Choose: rock, paper, scissor: ").toLowerCase();
         const computerSelection = getComputerChoice();
         result = playRound(playerSelection, computerSelection);
         if(result == 1) {
