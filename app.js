@@ -38,32 +38,43 @@ function game() {
         }
     }
 
-    let player, computer;
-    player = computer = 0;
+    const message = document.querySelector('.message');
+    const results = document.querySelector('.results');
+    const resultHeader = document.querySelector('.results>h2');
+    let playerSelection;
 
-    for (i = 0; i < 5; i++) {
-        // let playerSelection = prompt("Choose: rock, paper, scissor: ").toLowerCase();
-        const computerSelection = getComputerChoice();
-        result = playRound(playerSelection, computerSelection);
-        if(result == 1) {
-            console.log('You win!');
-            player++;
-        }else if(result == -1) {
-            console.log('You lose!');
-            computer++;
-        }else if (result == 0) {
-            console.log('Its a tie!');
-        }
-    }
+    const buttons = document.querySelectorAll('.player .button');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            playerSelection = button.id;
+            const computerSelection = getComputerChoice();
+            result = playRound(playerSelection, computerSelection);
+            if (result == 1) {
+                message.innerHTML = 'you win!';
+                message.setAttribute('style', 'opacity: 100; color: green;');
 
-    console.log('----------------------')
-    if(player > computer) {
-        console.log('You won!');
-    }else if(player < computer) {
-        console.log('You lost!');
-    }else {
-        console.log('Tie game!')
-    }
+                const p = document.createElement('p');
+                p.innerHTML = 'player wins';
+                p.setAttribute('style', 'color: green');
+                resultHeader.after(p);
+            } else if (result == -1) {
+                message.innerHTML = 'you lose!';
+                message.setAttribute('style', 'opacity: 100; color: red;');
+
+                const p = document.createElement('p');
+                p.innerHTML = 'computer wins';
+                p.setAttribute('style', 'color: red');
+                resultHeader.after(p);
+            } else if (result == 0) {
+                message.innerHTML = 'it\'s a tie!';
+                message.setAttribute('style', 'opacity: 100;');
+
+                const p = document.createElement('p');
+                p.innerHTML = 'tie game';
+                resultHeader.after(p);
+            }
+        })
+    });
 }
 
 game();

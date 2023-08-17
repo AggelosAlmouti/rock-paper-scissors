@@ -9,7 +9,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
 }
 
 body::-webkit-scrollbar {
@@ -21,7 +20,8 @@ body::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 10vh;
 }
 
 .game .button {
@@ -29,8 +29,15 @@ body::-webkit-scrollbar {
     transition: transform 0.3s;
 }
 
+.game .message {
+    opacity: 0;
+    font-weight: bolder;
+    font-size: larger;
+}
+
 .player .button:hover {
     transform: translateY(-15px);
+    cursor: pointer;
 }
 
 .player,
